@@ -1,0 +1,73 @@
+signup.css 
+#body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+   /* background-image: url("https://images.pexels.com/photos/9153468/pexels-photo-9153468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+}
+.back{
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-position: center;    
+  background-size: cover;
+  position: relative; 
+}
+.signup-form {
+   /* background-color: #f4f4f4; */
+   
+   padding: 20px; 
+   border-radius: 10px; 
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ } 
+ .container {
+  text-align: center;
+}
+.header {
+  margin-bottom: 20px;
+}
+.header h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.header p {
+  color: #888;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+.form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.form input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+.form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+.form .input {
+  position: relative;
+  margin-bottom: 15px;
+}
+.form .input i {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  color: #888;
+}
+.form .input input {
+  padding-left: 35px;
+}
+.form p {
+  margin-top: 15px;
+}
+.form p a {
+  color: #007bff;
+}    

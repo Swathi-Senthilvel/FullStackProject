@@ -1,0 +1,66 @@
+/* AddBooking.css */
+
+.back {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("https://resources.pulse.icc-cricket.com/ICC/photo/2017/01/12/fdbd5ce5-3914-453f-8f26-a52460bf151a/HPCA_Stadium.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+  
+  #container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
+  button#addbtn {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  button#addbtn:hover {
+    background-color: #0056b3;
+  }
+  
+  nav {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  

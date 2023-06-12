@@ -128,7 +128,7 @@ const Home = () => {
                   <td>{booking.team}</td>
                   <td>{booking.ticket_id}</td>
                   <td>
-                    <Link to={`/update/${booking.ticket_id}`}>
+                  <Link to={`/update/${booking.ticket_id}`} state={{ booking }}>
                       <button id="actions">Update</button>
                     </Link>
                     <br />

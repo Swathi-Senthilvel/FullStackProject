@@ -17,21 +17,14 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     @Query("SELECT b FROM Booking b WHERE b.team = :team")
     public List<Booking> getBookingsByTeam(String team);
-
     List<Booking> findByNameStartingWith(String prefix);
-
     List<Booking> findByNameEndingWith(String suffix);
-
     List<Booking> findByTeam(String team);
-
     @Modifying
     @Query("DELETE FROM Booking b WHERE b.name = ?1")
     public int deleteBookingByName(String name);
-
     @Modifying
     @Query("UPDATE Booking b SET b.team = ?1 WHERE b.name = ?2")
     public int updateBookingByName(String team, String name);
-
-    @Query(value = "SELECT * FROM bookings WHERE team = ?1", nativeQuery = true)
-    public List<Booking> fetchBookingsByTeam(String team);
+	public List<Booking> findAllByTeam(String team);
 }

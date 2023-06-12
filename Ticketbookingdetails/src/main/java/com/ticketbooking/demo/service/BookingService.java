@@ -14,30 +14,31 @@ import com.ticketbooking.demo.model.Booking;
 import com.ticketbooking.demo.repository.BookingRepository;
 
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class BookingService {
-  @Autowired
-  private BookingRepository bookingRepository;
+	@Autowired
+	private BookingRepository bookingRepository;
 
-  public List<Booking> getAllBookings() {
-      List<Booking> bookingList = bookingRepository.findAll();
-      return bookingList;
-  }
+	public List<Booking> getAllBookings() {
+		List<Booking> bookingList = bookingRepository.findAll();
+		return bookingList;
+	}
 
-  public Booking saveBooking(Booking booking) {
-      Booking savedBooking = bookingRepository.save(booking);
-      return savedBooking;
-  }
+	public Booking saveBooking(Booking booking) {
+		Booking savedBooking = bookingRepository.save(booking);
+		return savedBooking;
+	}
 
-  public Booking updateBooking(Booking booking) {
-      Booking updatedBooking = bookingRepository.save(booking);
-      return updatedBooking;
-  }
+	public Booking updateBooking(Booking booking) {
+		Booking updatedBooking = bookingRepository.save(booking);
+		return updatedBooking;
+	}
 
-  //public Booking updateBooking(Booking booking, int bookingId) {
-      //Optional<Booking> optional = bookingRepository.findById(bookingId);
-    //  Booking updatedBooking = null;
+	// public Booking updateBooking(Booking booking, int bookingId) {
+	// Optional<Booking> optional = bookingRepository.findById(bookingId);
+	// Booking updatedBooking = null;
 //      if (optional.isPresent()) {
 //          updatedBooking = optional.get();
 //          // Update the booking properties here
@@ -45,12 +46,13 @@ public class BookingService {
 //          // Set other properties of the booking object
 //          bookingRepository.save(updatedBooking);
 //      }
-     // return updatedBooking;
+	// return updatedBooking;
 //  }
 
-  public void deleteBooking(int bookingId) {
-      bookingRepository.deleteById(bookingId);
-  }
+	public void deleteBooking(int bookingId) {
+		bookingRepository.deleteById(bookingId);
+	}
+
 //
 //  public List<Booking> sortBookings(String field) {
 //      return bookingRepository.findAll(Sort.by(field));
@@ -72,55 +74,46 @@ public class BookingService {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-	public List<Booking> sortBookings(String name) 
-	{
-	    // Ascending Order return playRepository.findAll(Sort.by(name));
+	public List<Booking> sortBookings(String name) {
+		// Ascending Order return playRepository.findAll(Sort.by(name));
 		return bookingRepository.findAll(Sort.by(name));
-		
+
 	}
-	public Page<Booking> pagingBooking(int offset, int pageSize) 
-	{
-		PageRequest paging = PageRequest.of(offset, pageSize);
-		Page<Booking> bookingData=bookingRepository.findAll(paging);
-		//List<Player> playList=playData.getContent();
-		return bookingData;
+
+	public Page<Booking> pagingBooking(int offset, int pageSize) {
+		Pageable paging = PageRequest.of(offset, pageSize);
+		return bookingRepository.findAll(paging);
 	}
-	
-	public List<Booking>pagingAndSorting(int offset,int pageSize,String field)
+
+	public Page<Booking>pagingAndSorting(int offset,int pageSize,String field)
 	{
-		PageRequest paging = PageRequest.of(offset,pageSize).withSort(Sort.by(field));
-		Page<Booking> play = bookingRepository.findAll(paging);
-		return play.getContent();
+		Pageable paging = PageRequest.of(offset,pageSize).withSort(Sort.by(field));
+	     return bookingRepository.findAll(paging);
 	}
-	public List<Booking> fetchTeamByPrefix(String prefix)
-	{
+	public List<Booking> fetchTeamByPrefix(String prefix) {
 		return bookingRepository.findByNameStartingWith(prefix);
 	}
-	public List<Booking> fetchTeamBySuffix(String suffix)
-	{
+
+	public List<Booking> fetchTeamBySuffix(String suffix) {
 		return bookingRepository.findByNameEndingWith(suffix);
 	}
-	
-	public List<Booking> getBookingsByTeam(String team,String name)
-	{
-		return bookingRepository.getBookingsByTeam(team,name);
-	}
-	
-@Transactional
-public int deleteBookingByName(String name)
-{
-	return bookingRepository.deleteBookingByName(name);
-}
 
-@Transactional
-public int updateBookingByName(String team,String name)
-{
-	return bookingRepository.updateBookingByName(team,name);
-}
-	
-public List<Booking> fetchBookingsByTeam(String team)
-{
-	return bookingRepository.fetchBookingsByTeam(team);
-}
-	
+	public List<Booking> getBookingsByTeam(String team, String name) {
+		return bookingRepository.getBookingsByTeam(team, name);
 	}
+
+	@Transactional
+	public int deleteBookingByName(String name) {
+		return bookingRepository.deleteBookingByName(name);
+	}
+
+	@Transactional
+	public int updateBookingByName(String team, String name) {
+		return bookingRepository.updateBookingByName(team, name);
+	}
+
+	public List<Booking> fetchBookingsByTeam(String team) {
+		return bookingRepository.findAllByTeam(team);
+	}
+
+}

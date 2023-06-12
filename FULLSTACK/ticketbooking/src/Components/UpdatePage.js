@@ -4,7 +4,7 @@ import BookingService from '../Service/BookingService';
 import './Login1.css';
 const UpdatePage = () => {
   const navigate = useNavigate();
-  const { athleteId } = useParams();
+  const { id } = useParams();
   const location = useLocation();
 
   const [booking, setBooking] = useState({
@@ -18,8 +18,9 @@ const UpdatePage = () => {
     match_no: '',
     team: ''
   });
-
-  const { ticket_id, name, date, opponentteam, sno, stadium, mobile_no, match_no, team } = booking;
+  
+  const {ticket_id, name, date, opponentteam, sno, stadium, mobile_no, match_no, team } = booking;
+  console.log(booking);
 
   const saveOrUpdateBooking = (e) => {
     e.preventDefault();
@@ -50,7 +51,7 @@ const UpdatePage = () => {
           team
         };
 
-        BookingService.updateBooking(athleteId, updatedBooking)
+        BookingService.updateBooking(id, updatedBooking)
           .then((response) => {
             navigate('/home');
           })
